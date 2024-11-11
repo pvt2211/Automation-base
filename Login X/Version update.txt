@@ -1,0 +1,50 @@
+T?o Form nh?p d? li?u d?u vào thành nh?ng Block m?i 
++ C?t ghi thông tin d?u vào [username, password,...]
++ C?t ghi tr?ng thái k?t qu? ch?y [Block Acc capcha, Thay acc m?i, Unblock successfully, Login Done]
+
+
+Các bi?n m?i: Username tw => usernameTwitter
+C?t M?t Kh?u Twitter => passwordTwitter
+Noi Mu?n luu Tr?ng thái và D? Li?u => fileExcelPath
+
+Trang Luu Tr?ng Thái (Trang 0 là File Data) => indexSaveDataStatus
+
+C?t Ghi Login Twitter Successfully=> columLoginTwitterSuccessfully
+
+-> T?o thành nh?ng h?p Block d? check hon 
+
+Check dang nh?p = url => n?u vào th? home => dã dang nh?p tru?ng h?p còn l?i => check
+
+	+ Ð?i load element chung //*[@data-testid="AppTabBar_Home_Link" or @data-testid="loginButton" or @value="Send email" or @type="submit" or @placeholder="Enter Verification Code" or text()="Try Again"]
+
+	Load h?t t?t c? các tru?ng h?p 
+
+	Check While ch? username => n?u dang nh?p username r?i v?n còn username ti?p => check l?i du?c
+
+	H? tr? xóa ch? dã có s?n=> tránh ghi dè 
+
+
+Check capcha 
+
+	=> Check theo url => https://x.com/account/access
+
+	hasElement(//*[text()="Try Again"]) => khi acc b? block không th? m? khóa du?c 
+ 
+	hasElement(//*[@value="Send email" and @type="submit"]) => khi có nút ch?n m? khóa acc b?ng sent email
+
+	hasElement(//*[@placeholder="Enter Verification Code"]) => n?u có form nh?p code luôn tru?ng h?p b? l?i không nh?p code mà vào l?i 
+
+	hasElement(//*[@value="Continue to X" and @type="submit"]) => tru?ng h?p dã gi?i xong nhung không b?m ti?p theo du?c
+
+	hasElement(//*[@class="sc-1wksc40-0 eqSjTA logo"]) => check có logo capcha
+
+=> capcha => stop 
+
+else => check tr?ng thái chua xác d?nh 
+
+Có th? là chua load du?c h?t trang => check l?i 1 l?n n?a => done
+
+
+
+
+Else to => check 
