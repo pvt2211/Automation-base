@@ -1,0 +1,12 @@
+Đầu vào:
+$excelFilePath: Đường dẫn tới file excel ghi thông tin
+$sheetSaveData: Index của file excel ghi thông tin trạng thái mail tm
+$columnStatusMailTm : Cột ghi thông tin trạng thái mail tm
+$mailTm : thông tin mail tm
+$passwordMailTm: thông tin password mail tm
+$mailFrom : muốn đọc mail từ nguồn mail nào (ghi chính xác nguồn gửi)
+
+Đầu ra:
+$codeMailTm
+Nếu sai thông tin mail Tm sẽ viết vào excel ở sheet trạng thái và dừng toàn bộ chương trình
+Nếu $codeMailTm = 0 tức là chưa lấy được code => cần lấy lại
